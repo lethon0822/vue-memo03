@@ -36,11 +36,11 @@ const remove = async (id) => {
     }
   }
 }
-</script>
+</script>``
 
 <template>
   <div class="memo-list">
-    <router-link to="/memos/add" class="add btn btn-light">
+    <router-link to="/memo/add" class="add btn btn-light">
       + 추가하기
     </router-link>
     <div class="mb-3 mt-3 d-flex">

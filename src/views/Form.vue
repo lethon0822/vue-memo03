@@ -1,6 +1,9 @@
 <script setup>
 import httpServices from '@/services/httpServices';
-import { reactive } from 'vue';
+import { useRouter, useRoute } from 'vue-router';
+import { onMounted, reactive } from 'vue';
+
+const router = useRouter();
 const state = reactive({
   memo: {
     id: 0,
@@ -9,6 +12,13 @@ const state = reactive({
     createdAt: '',
   },
 });
+
+onMounted(()=>{
+  const passData = history.state.data;
+  if (passData) {
+    state.memo = JSON.parse(passData);
+  }
+})
 
 const submit = async () => {
   let data = null;
@@ -19,13 +29,14 @@ const submit = async () => {
   };
   if (state.memo.id > 0) {
     jsonBody.id = state.memo.id;
-    path = `/memo/${jsonBody.id}`;
+    path = `/memos/${jsonBody.id}`;
     data = await httpServices.modify(jsonBody);
   } else {
     data = await httpServices.save(jsonBody);
   }
 
   if (data.resultData === 1) {
+    alert('성공');
     router.push({ path });
   } else {
     alert(data.resultMessage);

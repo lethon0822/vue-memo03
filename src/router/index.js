@@ -9,7 +9,7 @@ const router = createRouter({
       component: () => import('@/views/Home.vue'),
     },
     {
-      path: '/memos/add',
+      path: '/memo/add',
       component: () => import('@/views/Form.vue'),
     },
     {

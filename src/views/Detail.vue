@@ -22,7 +22,7 @@ onMounted(async ()=>{
 const moveToForm = () => {
     const json = JSON.stringify(state.memo)
     router.push({
-        path: '/memos/add',
+        path: '/memo/add',
         state: {
             data: json
         }
